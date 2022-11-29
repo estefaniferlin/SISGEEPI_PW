@@ -1,7 +1,7 @@
 const { response } = require('express');
 const { pool } = require('../config');
 
-// Método para retornar todos os prédios
+// Método para retornar todos as salas
 const getSalas =(request, response) => {
     pool.query('SELECT * FROM salas ORDER BY codigo',  //query: recebe 2 parametros, um é o comando sql e o segundo os callbacks que podem executar 
         (error, results) => { //callbacks de erro e resultados
@@ -18,8 +18,8 @@ const getSalas =(request, response) => {
 
 // quando teremos mais de uma linha usamos ` `
 const addSala = (request, response) => {
-    //extrair o predio
-    const {numero, descricao, capacidade, predio} = request.body; // vou receber os dados que coimpletam minha tabela no bd pelo body
+    //extrair a sala
+    const {numero, descricao, capacidade, predio} = request.body; // vou receber os dados que completam minha tabela no bd pelo body
     pool.query(`INSERT INTO salas (numero, descricao, capacidade, predio) 
     VALUES ($1, $2, $3, $4) RETURNING codigo, numero, descricao, capacidade, predio`, 
     [numero, descricao, capacidade, predio], 
@@ -39,7 +39,7 @@ const addSala = (request, response) => {
 }
 
 const updateSala = (request, response) => {
-    const {numero, descricao, capacidade, predio, codigo} = request.body; // vou receber os dados que coimpletam minha tabela no bd pelo body
+    const {numero, descricao, capacidade, predio, codigo} = request.body; // vou receber os dados que completam minha tabela no bd pelo body
     pool.query(`UPDATE salas SET numero=$1, descricao=$2, capacidade=$3, predio=$4
     WHERE codigo=$5 RETURNING codigo, numero, descricao, capacidade, predio`, 
     [numero, descricao, capacidade, predio, codigo], 
@@ -52,7 +52,7 @@ const updateSala = (request, response) => {
         }
         response.status(200).json({
             status : "success", message : "Sala alterada",
-            objeto : results.rows[0] // retorna o predio criado
+            objeto : results.rows[0] // retorna a sala criada
 
         })
     })

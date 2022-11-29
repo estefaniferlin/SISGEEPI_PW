@@ -1,7 +1,6 @@
 {
   "name": "sisgeeapi_pw",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -19,5 +18,14 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "pg": "^8.8.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estefaniferlin/SISGEEPI_PW.git"
+  },
+  "bugs": {
+    "url": "https://github.com/estefaniferlin/SISGEEPI_PW/issues"
+  },
+  "homepage": "https://github.com/estefaniferlin/SISGEEPI_PW#readme",
+  "description": ""
 }
